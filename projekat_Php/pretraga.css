@@ -1,0 +1,12 @@
+.fset{
+	background: #eee;
+	font: 12px bold Ariel;
+}
+.fset legend {
+	font: 17px bold Ariel;
+}
+select .main {
+	font-style: italic;
+	font-size: 14px;
+	color: #555d50;
+}

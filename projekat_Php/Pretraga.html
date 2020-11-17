@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pretraga</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="strana0.css">
+	<link rel="stylesheet" type="text/css" href="navbar.css">
+	<link rel="stylesheet" type="text/css" href="pretraga.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+</head>
+<body>
+	<nav>
+		<ul id="menu">
+			<li class="home"><a href='strana0.php'><img style="vertical-align: middle;" src="pictures/menu/arrow-left.png" height="20px" width="20px"></a></li>
+			<li><a class='prett' href='#' title='Menu'>Promotivni materijal</a>
+      			<ul class='menus'>
+        			<li class='has-submenu'><a class='prett' href='#' title='Dropdown 1'>Bugarska</a>
+          		<ul class='submenu'>
+            		<li><a href="Suncana_plaza.html" title="Sub Menu">Sunčana plaža</a></li>
+            		<li><a href="Varna.html" title="Sub Menu">Varna</a></li>
+            		<li><a href="Nesebar.html" title="Sub Menu">Nesebar</a></li>
+            		<li><a href="Sozopolj.html" title="Sub Menu">Sozopolj</a></li>
+          		</ul>
+        			</li>
+
+        			<li class='has-submenu'><a class='prett' href='#' title='Dropdown 1'>Grčka</a>
+          		<ul class='submenu'>
+            		<li><a href="Zakintos.html" title="Sub Menu">Ostrvo Zakintos</a></li>
+            		<li><a href="Mikonos.html" title="Sub Menu">Mikonos</a></li>
+            		<li><a href="Krf.html" title="Sub Menu">Krf</a></li>
+            		<li><a href="Santorini.html" title="Sub Menu">Santorini</a></li>
+          		</ul>
+        			</li>
+
+        			<li class='has-submenu'><a class='prett' href='#' title='Dropdown 1'>Turska</a>
+          		<ul class='submenu'>
+            		<li><a href="Antalija.html" title="Sub Menu">Antalija</a></li>
+            		<li><a href="Oludeniz.html" title="Sub Menu">Oludeniz</a></li>
+            		<li><a href="Alanja.html" title="Sub Menu">Alanja</a></li>
+            		<li><a href="Bodrum.html" title="Sub Menu">Bodrum</a></li>
+          		</ul>
+        			</li>
+      			</ul>
+    		</li>
+		</ul>
+	</nav>
+
+	<fieldset class="fset">
+                <form action="pretraga.php" method="post">
+			<table>
+				<tr>
+					<td>
+						<label>Pretraga:</label> 
+						<input type="search" placeholder="naziv mesta..." name="naziv">
+						<input type="submit" name="submit-button" value="pretraga">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</fieldset>
+	<fieldset class="fset">
+		<legend>Aranzmani</legend>
+                <form action="pretraga.php" method="post">
+			<table>
+				<tr>
+					<td>
+						<label>putne ponude: </label>
+                                                <select name="pretraga[paket]">
+                                                        <option value="">--svi--</option>
+							<option value="vikend">vikend</option>
+							<option value="nedeljna">nedeljne</option>
+							<option value="vise-nedeljna">više-nedeljne</option>
+						</select>
+					</td>
+					<td>
+						<label>agencija: </label>
+						<select name="pretraga[agencija]">
+                                                    <option value="">--svi--</option>
+						<optgroup label="Beograd">
+							<option value="Turisttrade">Turisttrade</option>
+							<option value="EvroTurs">EvroTurs</option>
+							<option value="Travellino">Travellino</option>
+							<option value="BigBlue">BigBlue</option>
+						</optgroup>
+						<optgroup label="Niš">
+							<option value="BigStar">BigStar</option>
+							<option value="Euroturs">Euroturs</option>
+							<option value="Globus">Globus</option>
+						</optgroup>
+						<optgroup label="Novi Sad">
+							<option value="Philoxenia">Philoxenia</option>
+							<option value="Sherry">Sherry</option>
+							<option value="Alimpex">Alimpex</option>
+						</optgroup>
+						<optgroup label="Kragujevac">
+							<option value="Prestige">Prestige</option>
+							<option value="MountTurs">MountTurs</option>
+							<option value="AllegroTravel">AllegroTravel</option>
+						</optgroup>
+						<optgroup label="Subotica">
+							<option value="Proffis">Proffis</option>
+							<option value="SuTrans">SuTrans</option>
+							<option value="BojanaTurs">BojanaTurs</option>
+						</optgroup>
+						</select>
+					</td>
+					<td>
+						<label>grad: </label>
+						<select name="pretraga[grad]">
+                                                    <option value="">--svi--</option>
+							<optgroup class="main" label="Bugarska">
+								<optgroup label="letnji">
+									<option value="Rusalka">Rusalka</option>
+									<option value="Primorsko">Primorsko</option>
+									<option value="Kavarna">Kavarna</option>
+									<option value="Albena">Albena</option>
+									<option value="Kiten">Kiten</option>
+									<option value="Zlatni_pesak">Zlatni pesak</option>
+									<option value="Konstantin_i_helena">Konstantin i Helena</option>
+									<option value="Irakli">Irakli</option>
+								</optgroup>
+								<optgroup label="zimski">
+									<option value="Borovec">Borovec</option>
+									<option value="Pamporovo">Pamporovo</option>
+									<option value="Kulinoto">Kulinoto</option>
+									<option value="Cigov_cark">Cigov Čark</option>
+									<option value="Bodrost">Bodrost</option>
+									<option value="Bansko">Bansko</option>
+									<option value="Semskovo">Semskovo</option>
+								</optgroup>
+								<optgroup label="turistički">
+									<option value="Sofija">Sofija</option>
+									<option value="Ruse">Ruse</option>
+									<option value="Stara_Zagora">Stara Zagora</option>
+									<option value="Veliko_Tarnovo">Veliko Tarnovo</option>
+								</optgroup>
+							</optgroup>
+							<optgroup class="main" label="Turska">
+								<optgroup label="letnji">
+									<option value="Antalija">Antalija</option>
+									<option value="Oludeniz">Oludeniz</option>
+									<option value="Alanja">Alanja</option>
+									<option value="Bodrum">Bodrum</option>
+									<option value="Kusadasi">Kušadasi</option>
+									<option value="Marmaris">Marmaris</option>
+									<option value="Cesme">Česme</option>
+								</optgroup>
+								<optgroup label="zimski">
+									<option value="Kartalkaja">Kartalkaja</option>
+									<option value="Saklikent">Saklikent</option>
+									<option value="Ercijes_ski_resort">Ercijes Ski Resort</option>
+									<option value="Palanduken_ski_center">Palanduken Ski Center</option>
+								</optgroup>
+								<optgroup label="turistički">
+									<option value="Istanbul">Istanbul</option>
+									<option value="Ankara">Ankara</option>
+									<option value="Izmir">Izmir</option>
+									<option value="Bursa">Bursa</option>
+									<option value="Jedrene">Jedrene</option>
+									<option value="Izmit">Izmit</option>
+								</optgroup>
+							</optgroup>
+							<optgroup class="main" label="Grčka">
+								<optgroup label="letnji">
+									<option value="Fira">Fira(ostrvo Santorini)</option>
+									<option value="Kamari">Kamari(ostrvo Santorini)</option>
+									<option value="Oia">Oia(ostrvo Santorini)</option>
+									<option value="Imerovigli">Imerovigli(ostrvo Santorini)</option>
+									<option value="Mikonos">Mikonos(ostrvo Mikonos)</option>
+									<option value="Laganas">Laganas(ostrvo Zakintos)</option>
+									<option value="Kavos">Kavos(ostrvo Krf)</option>
+									<option value="Kasiopi">Kasiopi(ostrvo Krf)</option>
+									<option value="Sidari">Sidari(ostrvo Krf)</option>
+								</optgroup>
+								<optgroup label="turistički">
+									<option value="Atina">Atina</option>
+									<option value="Solun">Solun</option>
+									<option value="Kavala">Kavala</option>
+									<option value="Krf">Krf(ostrvo Krf)</option>
+									<option value="Heraklion">Heraklion(ostrvo Krit)</option>
+									<option value="Hanija">Hanija(ostrvo Krit)</option>
+								</optgroup>
+							</optgroup>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>tip smestaja: </label>
+                                                        <select name="pretraga[smestaj]">
+                                                                <option value="">--svi--</option>
+								<option value="hotel">hotelski</option>
+								<option value="hostel">hostel</option>
+								<option value="privatni">privatni</option>
+							</select>
+					</td>
+					<td>
+						<label>prevoz: </label>
+                                                        <select name="pretraga[tipPrevoza]">
+                                                                <option value="">--svi--</option>
+								<option value="avion">avionski</option>
+								<option value="autobus">autobus</option>
+								<option value="sopstveni">sopstveni</option>
+							</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>datum polaska: </label>
+						<input type="date" name="pretraga[date]" id="e">
+                                                
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Kako ste culi za nas: </label>
+                                                <select name="comment">
+							<option value="preko_prijatelja">preko prijatelja</option>
+							<option value="preko_sajta">preko sajta</option>
+							<option value="promocija">promocija</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+				<td>
+					<input type="submit" name="submit" value="potvrdi">
+					<input type="reset" value="poništi">
+				</td>
+				</tr>
+			</table>
+		</form>
+	</fieldset>
+
+</body>
+</html>
