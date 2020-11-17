@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="projekatModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="KontaktOsoba">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="prezime" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RadnoMesto" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TelefonFK" Type="int" Nullable="false" />
+    <Property Name="MailFK" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ListaMailAdresa">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="oznaka" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="adresa" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ListaSkola">
+    <Key>
+      <PropertyRef Name="idS" />
+    </Key>
+    <Property Name="idS" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NazivSkole" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdresaReg" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Opstina" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PostanskiBroj" Type="int" Nullable="false" />
+    <Property Name="MaticniBroj" Type="int" Nullable="false" />
+    <Property Name="pib" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BrojRacuna" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WebStranica" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="KontaktOsobaFK" Type="int" Nullable="false" />
+    <Property Name="SlikaPecat" Type="varchar" MaxLength="50" />
+    <Property Name="Beleske" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ListaTelefona">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="oznaka" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="brojTelefona" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="lokal" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="login">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="userType" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_KontaktOsoba_ListaMailAdresa">
+    <End Role="ListaMailAdresa" Type="Self.ListaMailAdresa" Multiplicity="1" />
+    <End Role="KontaktOsoba" Type="Self.KontaktOsoba" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ListaMailAdresa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="KontaktOsoba">
+        <PropertyRef Name="MailFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KontaktOsoba_ListaTelefona">
+    <End Role="ListaTelefona" Type="Self.ListaTelefona" Multiplicity="1" />
+    <End Role="KontaktOsoba" Type="Self.KontaktOsoba" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ListaTelefona">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="KontaktOsoba">
+        <PropertyRef Name="TelefonFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ListaSkola_KontaktOsoba">
+    <End Role="KontaktOsoba" Type="Self.KontaktOsoba" Multiplicity="1" />
+    <End Role="ListaSkola" Type="Self.ListaSkola" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KontaktOsoba">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ListaSkola">
+        <PropertyRef Name="KontaktOsobaFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="projekatModelStoreContainer">
+    <EntitySet Name="KontaktOsoba" EntityType="Self.KontaktOsoba" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ListaMailAdresa" EntityType="Self.ListaMailAdresa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ListaSkola" EntityType="Self.ListaSkola" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ListaTelefona" EntityType="Self.ListaTelefona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="login" EntityType="Self.login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_KontaktOsoba_ListaMailAdresa" Association="Self.FK_KontaktOsoba_ListaMailAdresa">
+      <End Role="ListaMailAdresa" EntitySet="ListaMailAdresa" />
+      <End Role="KontaktOsoba" EntitySet="KontaktOsoba" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KontaktOsoba_ListaTelefona" Association="Self.FK_KontaktOsoba_ListaTelefona">
+      <End Role="ListaTelefona" EntitySet="ListaTelefona" />
+      <End Role="KontaktOsoba" EntitySet="KontaktOsoba" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ListaSkola_KontaktOsoba" Association="Self.FK_ListaSkola_KontaktOsoba">
+      <End Role="KontaktOsoba" EntitySet="KontaktOsoba" />
+      <End Role="ListaSkola" EntitySet="ListaSkola" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

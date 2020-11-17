@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="projekatModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="login">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="projekatEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="logins" EntityType="Self.login" />
+    <EntitySet Name="KontaktOsobas" EntityType="projekatModel.KontaktOsoba" />
+    <EntitySet Name="ListaMailAdresas" EntityType="projekatModel.ListaMailAdresa" />
+    <EntitySet Name="ListaSkolas" EntityType="projekatModel.ListaSkola" />
+    <EntitySet Name="ListaTelefonas" EntityType="projekatModel.ListaTelefona" />
+    <EntitySet Name="sysdiagrams" EntityType="projekatModel.sysdiagram" />
+    <AssociationSet Name="FK_KontaktOsoba_ListaMailAdresa" Association="projekatModel.FK_KontaktOsoba_ListaMailAdresa">
+      <End Role="ListaMailAdresa" EntitySet="ListaMailAdresas" />
+      <End Role="KontaktOsoba" EntitySet="KontaktOsobas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KontaktOsoba_ListaTelefona" Association="projekatModel.FK_KontaktOsoba_ListaTelefona">
+      <End Role="ListaTelefona" EntitySet="ListaTelefonas" />
+      <End Role="KontaktOsoba" EntitySet="KontaktOsobas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ListaSkola_KontaktOsoba" Association="projekatModel.FK_ListaSkola_KontaktOsoba">
+      <End Role="KontaktOsoba" EntitySet="KontaktOsobas" />
+      <End Role="ListaSkola" EntitySet="ListaSkolas" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="KontaktOsoba">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="prezime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RadnoMesto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TelefonFK" Type="Int32" Nullable="false" />
+    <Property Name="MailFK" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ListaMailAdresa" Relationship="projekatModel.FK_KontaktOsoba_ListaMailAdresa" FromRole="KontaktOsoba" ToRole="ListaMailAdresa" />
+    <NavigationProperty Name="ListaTelefona" Relationship="projekatModel.FK_KontaktOsoba_ListaTelefona" FromRole="KontaktOsoba" ToRole="ListaTelefona" />
+    <NavigationProperty Name="ListaSkolas" Relationship="projekatModel.FK_ListaSkola_KontaktOsoba" FromRole="KontaktOsoba" ToRole="ListaSkola" />
+  </EntityType>
+  <EntityType Name="ListaMailAdresa">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="oznaka" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="adresa" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="KontaktOsobas" Relationship="projekatModel.FK_KontaktOsoba_ListaMailAdresa" FromRole="ListaMailAdresa" ToRole="KontaktOsoba" />
+  </EntityType>
+  <EntityType Name="ListaSkola">
+    <Key>
+      <PropertyRef Name="idS" />
+    </Key>
+    <Property Name="idS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NazivSkole" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AdresaReg" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Opstina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PostanskiBroj" Type="Int32" Nullable="false" />
+    <Property Name="MaticniBroj" Type="Int32" Nullable="false" />
+    <Property Name="pib" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BrojRacuna" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WebStranica" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="KontaktOsobaFK" Type="Int32" Nullable="false" />
+    <Property Name="SlikaPecat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Beleske" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="KontaktOsoba" Relationship="projekatModel.FK_ListaSkola_KontaktOsoba" FromRole="ListaSkola" ToRole="KontaktOsoba" />
+  </EntityType>
+  <EntityType Name="ListaTelefona">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="oznaka" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="brojTelefona" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lokal" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="KontaktOsobas" Relationship="projekatModel.FK_KontaktOsoba_ListaTelefona" FromRole="ListaTelefona" ToRole="KontaktOsoba" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_KontaktOsoba_ListaMailAdresa">
+    <End Type="projekatModel.ListaMailAdresa" Role="ListaMailAdresa" Multiplicity="1" />
+    <End Type="projekatModel.KontaktOsoba" Role="KontaktOsoba" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ListaMailAdresa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="KontaktOsoba">
+        <PropertyRef Name="MailFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KontaktOsoba_ListaTelefona">
+    <End Type="projekatModel.ListaTelefona" Role="ListaTelefona" Multiplicity="1" />
+    <End Type="projekatModel.KontaktOsoba" Role="KontaktOsoba" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ListaTelefona">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="KontaktOsoba">
+        <PropertyRef Name="TelefonFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ListaSkola_KontaktOsoba">
+    <End Type="projekatModel.KontaktOsoba" Role="KontaktOsoba" Multiplicity="1" />
+    <End Type="projekatModel.ListaSkola" Role="ListaSkola" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KontaktOsoba">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ListaSkola">
+        <PropertyRef Name="KontaktOsobaFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

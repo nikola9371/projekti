@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="projekatModelStoreContainer" CdmEntityContainer="projekatEntities">
+    <EntitySetMapping Name="logins">
+      <EntityTypeMapping TypeName="projekatModel.login">
+        <MappingFragment StoreEntitySet="login">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="userType" ColumnName="userType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KontaktOsobas">
+      <EntityTypeMapping TypeName="projekatModel.KontaktOsoba">
+        <MappingFragment StoreEntitySet="KontaktOsoba">
+          <ScalarProperty Name="MailFK" ColumnName="MailFK" />
+          <ScalarProperty Name="TelefonFK" ColumnName="TelefonFK" />
+          <ScalarProperty Name="RadnoMesto" ColumnName="RadnoMesto" />
+          <ScalarProperty Name="prezime" ColumnName="prezime" />
+          <ScalarProperty Name="ime" ColumnName="ime" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ListaMailAdresas">
+      <EntityTypeMapping TypeName="projekatModel.ListaMailAdresa">
+        <MappingFragment StoreEntitySet="ListaMailAdresa">
+          <ScalarProperty Name="adresa" ColumnName="adresa" />
+          <ScalarProperty Name="oznaka" ColumnName="oznaka" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ListaSkolas">
+      <EntityTypeMapping TypeName="projekatModel.ListaSkola">
+        <MappingFragment StoreEntitySet="ListaSkola">
+          <ScalarProperty Name="Beleske" ColumnName="Beleske" />
+          <ScalarProperty Name="SlikaPecat" ColumnName="SlikaPecat" />
+          <ScalarProperty Name="KontaktOsobaFK" ColumnName="KontaktOsobaFK" />
+          <ScalarProperty Name="WebStranica" ColumnName="WebStranica" />
+          <ScalarProperty Name="BrojRacuna" ColumnName="BrojRacuna" />
+          <ScalarProperty Name="pib" ColumnName="pib" />
+          <ScalarProperty Name="MaticniBroj" ColumnName="MaticniBroj" />
+          <ScalarProperty Name="PostanskiBroj" ColumnName="PostanskiBroj" />
+          <ScalarProperty Name="Opstina" ColumnName="Opstina" />
+          <ScalarProperty Name="AdresaReg" ColumnName="AdresaReg" />
+          <ScalarProperty Name="NazivSkole" ColumnName="NazivSkole" />
+          <ScalarProperty Name="idS" ColumnName="idS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ListaTelefonas">
+      <EntityTypeMapping TypeName="projekatModel.ListaTelefona">
+        <MappingFragment StoreEntitySet="ListaTelefona">
+          <ScalarProperty Name="lokal" ColumnName="lokal" />
+          <ScalarProperty Name="brojTelefona" ColumnName="brojTelefona" />
+          <ScalarProperty Name="oznaka" ColumnName="oznaka" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="projekatModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

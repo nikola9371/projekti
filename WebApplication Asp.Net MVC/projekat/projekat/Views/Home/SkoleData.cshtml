@@ -1,0 +1,102 @@
+﻿
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+</head>
+
+<body>
+    @{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    @{
+        ViewBag.Title = "Podaci o skoli";
+    }
+    @Styles.Render("~/Styles/Index.css") <!--Bilo /Registration -->
+
+    <nav class="navbar bg-dark navbar-dark" style="width:360px">
+
+        <h1 style="color:white">Podaci o školi</h1>
+        <br>
+    </nav>
+    <br>
+
+    <div class="container col-lg-12 col-md-12 col-sm-12" style="background-color:white;height:150%">
+
+        <br><br>
+
+        @using (Html.BeginForm("Authorize", "Home", FormMethod.Post))
+        {
+
+            <div class="container col-lg-6 col-md-12 col-sm-12" style="background-color:white;float:left">
+                <div class="form-group">
+                    <label for="nazivSkole" style="font-size:18.8px">Pun naziv škole</label>
+                    <input type="text" class="form-control" id="nazivSkole" placeholder="naziv skole">
+                </div>
+                <div class="form-group">
+                    <label for="adresa">Adresa registracije škole</label>
+                    <input type="text" class="form-control" id="adresa" placeholder="adresa skole">
+                </div>
+                <div class="form-group">
+                    <label for="opstina">Opština</label>
+                    <input type="text" class="form-control" id="opstina" placeholder="opstina">
+                </div>
+                <div class="form-group">
+                    <label for="pb">Poštanski Broj</label>
+                    <input type="text" class="form-control" id="pb" placeholder="postanski broj">
+                </div>
+                <div class="form-group">
+                    <label for="mb">Matični broj</label>
+                    <input type="text" class="form-control" id="mb" placeholder="maticni broj">
+                </div>
+                <div class="form-group">
+                    <label for="pib">PIB</label>
+                    <input type="text" class="form-control" id="pib" placeholder="pib">
+                </div>
+                <div class="form-group">
+                    <label for="brRac">Broj računa skole</label>
+                    <input type="text" class="form-control" id="brRac" placeholder="broj racuna skole">
+                </div>
+                <div class="form-group">
+                    <label for="stranica">Veb stranica skole</label>
+                    <input type="text" class="form-control" id="stranica" placeholder="veb stranica">
+                </div>
+                <br>
+
+            </div>
+
+            <div class="container col-lg-6 col-md-12 col-sm-12" style="background-color:white;float:left">
+                <h5>Podaci o kontakt osobi:</h5>
+                <div class="form-group">
+                    <label for="ime">Ime</label>
+                    <input type="text" class="form-control" id="ime" placeholder="ime">
+                </div>
+                <div class="form-group">
+                    <label for="prezime">Prezime</label>
+                    <input type="text" class="form-control" id="prezime" placeholder="prezime">
+                </div>
+                <div class="form-group">
+                    <label for="rm">Radno mesto</label>
+                    <input type="text" class="form-control" id="rm" placeholder="radno mesto">
+                </div>
+
+                <div class="form-group">
+                    <label for="imgS">Pečat Skole</label> <br>
+                    <input type="file" id="imgs" value="Pronađi">
+                    <p class="help-block">Pronađite pečat na Vašoj mašini.</p>
+                </div>
+                <div class="form-group">
+                    <label for="beleske">Beleške</label><br>
+                    <textarea id="beleske" placeholder="unesite beleske"></textarea>
+                </div>
+                <button type="submit" class="btn btn-default">Napravi nalog</button>
+
+
+            </div>
+        }
+    </div>
+
+</body>
+</html>

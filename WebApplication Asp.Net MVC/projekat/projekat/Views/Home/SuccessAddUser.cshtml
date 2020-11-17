@@ -1,0 +1,21 @@
+﻿@model projekat.Models.login
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SuccessAddUser</title>
+</head>
+<body>
+    @Styles.Render("~/Styles/Index.css")
+
+    <div style="background-color:white;width:100px">
+        <h3 style="color:white">@Html.DisplayFor(model => model.SuccessAddUser)</h3>
+        @Html.ActionLink("Početna strana", "Index")
+    </div>
+</body>
+</html>
