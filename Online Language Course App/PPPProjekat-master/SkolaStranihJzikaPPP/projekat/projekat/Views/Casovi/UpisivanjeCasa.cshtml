@@ -1,0 +1,67 @@
+﻿@model projekat.viewModel.SkolaViewModel
+@{
+    ViewBag.Title = "UpisivanjeCasa";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header"><h4 class="text-center" style="font-family:'Times New Roman';">Upisivanje časa</h4></div>
+            <div class="card-body">
+                @using (Html.BeginForm("upisiCas", "Casovi", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    if (ViewBag.SuccMsg != null)
+                    {
+                        <div class="form-row hideAfter">
+                            <div class="form-group col-md-8"><p class="text-success">@ViewBag.SuccMsg</p></div>
+                        </div>
+                    }
+                    else if (ViewBag.ErrMsg != null)
+                    {
+                        <div class="form-row hideAfter">
+                            <div class="form-group col-md-8"><p class="text-danger">@ViewBag.ErrMsg</p></div>
+                        </div>
+                    }
+                    <div class="form-row">
+                        <div class="col-md-3"></div>
+                        <div class="form-group col-md-8">
+                            @Html.Label("Datum","Datum:")
+                            @*<input class="form-control" type="date" name="Datum" value="@DateTime.Now.ToString("yyy-MM-dd")" />*@
+                            @Html.TextBoxFor(x => x.Cas.Datum,"{0:yyyy-MM-dd}", new { type="date",@class="form-control"})
+                        </div>
+                        
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @Html.Label("imeProfesora", "Profesor:")
+                            @Html.TextBoxFor(x => x.imeProfesora, new { @class = "form-control", disabled = "true" })
+                            @Html.HiddenFor(x=>x.Cas.ProfesorID)
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(x=>x.Cas.KursID,"Kursevi:")
+                            @Html.DropDownListFor(x=>x.Cas.KursID,Model.KurseviLista,null,new { @class="form-control"})
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-3"></div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(x => x.Cas.Opis, "Opis:")
+                            @Html.TextAreaFor(x => x.Cas.Opis, new { @class = "form-control",rows="6",cols="10",wrap="hard",placeholder="opis časa..",maxlength="300"})
+                            @Html.ValidationMessageFor(x => x.Cas.Opis, null, new { @class="text-danger hideAfter"})
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block mb-2">Potvrdi</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    setTimeout(function () { $('.hideAfter').hide(); }, 4000);
+</script>

@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SkolaSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="int" Nullable="false" />
+    <Property Name="Id_Korisnik_FK" Type="int" />
+    <Property Name="Jezici" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Cas">
+    <Key>
+      <PropertyRef Name="ID_Cas" />
+    </Key>
+    <Property Name="ID_Cas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Datum" Type="date" Nullable="false" />
+    <Property Name="ProfesorID" Type="int" Nullable="false" />
+    <Property Name="KursID" Type="int" Nullable="false" />
+    <Property Name="Opis" Type="nvarchar" MaxLength="300" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dokument">
+    <Key>
+      <PropertyRef Name="ID_Dok" />
+    </Key>
+    <Property Name="ID_Dok" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ime" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="DokumentAdresa" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="KorisnikID_FK" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ispit">
+    <Key>
+      <PropertyRef Name="ID_Ispit" />
+    </Key>
+    <Property Name="ID_Ispit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Datum" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ispit_Odrzavanje">
+    <Key>
+      <PropertyRef Name="Id_IspitOdrz" />
+    </Key>
+    <Property Name="Id_IspitOdrz" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="IspitID_FK" Type="int" Nullable="false" />
+    <Property Name="StudentID_FK" Type="int" Nullable="false" />
+    <Property Name="Ocena" Type="int" Nullable="false" />
+    <Property Name="Rad" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Korisnik">
+    <Key>
+      <PropertyRef Name="ID_Korisnik" />
+    </Key>
+    <Property Name="ID_Korisnik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ime" Type="nvarchar" MaxLength="20" />
+    <Property Name="Adresa" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telefon" Type="int" />
+    <Property Name="JMGB" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="Kurs">
+    <Key>
+      <PropertyRef Name="ID_Kurs" />
+    </Key>
+    <Property Name="ID_Kurs" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ime" Type="nvarchar" MaxLength="20" />
+    <Property Name="Trajanje" Type="nvarchar" MaxLength="10" />
+    <Property Name="Kod" Type="nvarchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="login">
+    <Key>
+      <PropertyRef Name="id_Login" />
+    </Key>
+    <Property Name="id_Login" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="userType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="korisnikID_FK" Type="int" />
+  </EntityType>
+  <EntityType Name="Materijal">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ime" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Atribut" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProfesorID" Type="int" Nullable="false" />
+    <Property Name="KursID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="prisustvuje">
+    <Key>
+      <PropertyRef Name="Id_Prisustvo" />
+    </Key>
+    <Property Name="Id_Prisustvo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CasID_FK" Type="int" Nullable="false" />
+    <Property Name="StudentID_FK" Type="int" Nullable="false" />
+    <Property Name="prisutan" Type="bit" />
+  </EntityType>
+  <EntityType Name="Profesor">
+    <Key>
+      <PropertyRef Name="ProfesorID" />
+    </Key>
+    <Property Name="ProfesorID" Type="int" Nullable="false" />
+    <Property Name="id_Korisnik_FK" Type="int" />
+    <Property Name="Jezici" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="Korisnik_FK" Type="int" Nullable="false" />
+    <Property Name="Kurs_FK" Type="int" Nullable="false" />
+    <Property Name="ZakljucnaOcena" Type="float" />
+  </EntityType>
+  <EntityType Name="Transakcija">
+    <Key>
+      <PropertyRef Name="ID_Trans" />
+    </Key>
+    <Property Name="ID_Trans" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Suma" Type="money" Nullable="false" />
+    <Property Name="BrojKartice" Type="int" Nullable="false" />
+    <Property Name="StudentID_FK" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Admin_Korisnik">
+    <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="0..1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Korisnik">
+        <PropertyRef Name="ID_Korisnik" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="Id_Korisnik_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cas_Kurs">
+    <End Role="Kurs" Type="Self.Kurs" Multiplicity="1" />
+    <End Role="Cas" Type="Self.Cas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kurs">
+        <PropertyRef Name="ID_Kurs" />
+      </Principal>
+      <Dependent Role="Cas">
+        <PropertyRef Name="KursID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cas_Profesor">
+    <End Role="Profesor" Type="Self.Profesor" Multiplicity="1" />
+    <End Role="Cas" Type="Self.Cas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profesor">
+        <PropertyRef Name="ProfesorID" />
+      </Principal>
+      <Dependent Role="Cas">
+        <PropertyRef Name="ProfesorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dokument_Korisnik">
+    <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+    <End Role="Dokument" Type="Self.Dokument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Korisnik">
+        <PropertyRef Name="ID_Korisnik" />
+      </Principal>
+      <Dependent Role="Dokument">
+        <PropertyRef Name="KorisnikID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ispit_Odrzavanje_Ispit">
+    <End Role="Ispit" Type="Self.Ispit" Multiplicity="1" />
+    <End Role="Ispit_Odrzavanje" Type="Self.Ispit_Odrzavanje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ispit">
+        <PropertyRef Name="ID_Ispit" />
+      </Principal>
+      <Dependent Role="Ispit_Odrzavanje">
+        <PropertyRef Name="IspitID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ispit_Odrzavanje_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Ispit_Odrzavanje" Type="Self.Ispit_Odrzavanje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="Ispit_Odrzavanje">
+        <PropertyRef Name="StudentID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_login_Korisnik">
+    <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="0..1" />
+    <End Role="login" Type="Self.login" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Korisnik">
+        <PropertyRef Name="ID_Korisnik" />
+      </Principal>
+      <Dependent Role="login">
+        <PropertyRef Name="korisnikID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Materijal_Kurs">
+    <End Role="Kurs" Type="Self.Kurs" Multiplicity="1" />
+    <End Role="Materijal" Type="Self.Materijal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kurs">
+        <PropertyRef Name="ID_Kurs" />
+      </Principal>
+      <Dependent Role="Materijal">
+        <PropertyRef Name="KursID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Materijal_Profesor">
+    <End Role="Profesor" Type="Self.Profesor" Multiplicity="1" />
+    <End Role="Materijal" Type="Self.Materijal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profesor">
+        <PropertyRef Name="ProfesorID" />
+      </Principal>
+      <Dependent Role="Materijal">
+        <PropertyRef Name="ProfesorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_prisustvuje_Cas">
+    <End Role="Cas" Type="Self.Cas" Multiplicity="1" />
+    <End Role="prisustvuje" Type="Self.prisustvuje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cas">
+        <PropertyRef Name="ID_Cas" />
+      </Principal>
+      <Dependent Role="prisustvuje">
+        <PropertyRef Name="CasID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_prisustvuje_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="prisustvuje" Type="Self.prisustvuje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="prisustvuje">
+        <PropertyRef Name="StudentID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Profesor_Korisnik1">
+    <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="0..1" />
+    <End Role="Profesor" Type="Self.Profesor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Korisnik">
+        <PropertyRef Name="ID_Korisnik" />
+      </Principal>
+      <Dependent Role="Profesor">
+        <PropertyRef Name="id_Korisnik_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Korisnik">
+    <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Korisnik">
+        <PropertyRef Name="ID_Korisnik" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="Korisnik_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Kurs">
+    <End Role="Kurs" Type="Self.Kurs" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kurs">
+        <PropertyRef Name="ID_Kurs" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="Kurs_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transakcija_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Transakcija" Type="Self.Transakcija" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="Transakcija">
+        <PropertyRef Name="StudentID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SkolaSModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cas" EntityType="Self.Cas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dokument" EntityType="Self.Dokument" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ispit" EntityType="Self.Ispit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ispit_Odrzavanje" EntityType="Self.Ispit_Odrzavanje" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Korisnik" EntityType="Self.Korisnik" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kurs" EntityType="Self.Kurs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="login" EntityType="Self.login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Materijal" EntityType="Self.Materijal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="prisustvuje" EntityType="Self.prisustvuje" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Profesor" EntityType="Self.Profesor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transakcija" EntityType="Self.Transakcija" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Admin_Korisnik" Association="Self.FK_Admin_Korisnik">
+      <End Role="Korisnik" EntitySet="Korisnik" />
+      <End Role="Admin" EntitySet="Admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cas_Kurs" Association="Self.FK_Cas_Kurs">
+      <End Role="Kurs" EntitySet="Kurs" />
+      <End Role="Cas" EntitySet="Cas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cas_Profesor" Association="Self.FK_Cas_Profesor">
+      <End Role="Profesor" EntitySet="Profesor" />
+      <End Role="Cas" EntitySet="Cas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dokument_Korisnik" Association="Self.FK_Dokument_Korisnik">
+      <End Role="Korisnik" EntitySet="Korisnik" />
+      <End Role="Dokument" EntitySet="Dokument" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ispit_Odrzavanje_Ispit" Association="Self.FK_Ispit_Odrzavanje_Ispit">
+      <End Role="Ispit" EntitySet="Ispit" />
+      <End Role="Ispit_Odrzavanje" EntitySet="Ispit_Odrzavanje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ispit_Odrzavanje_Student" Association="Self.FK_Ispit_Odrzavanje_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Ispit_Odrzavanje" EntitySet="Ispit_Odrzavanje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_login_Korisnik" Association="Self.FK_login_Korisnik">
+      <End Role="Korisnik" EntitySet="Korisnik" />
+      <End Role="login" EntitySet="login" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Materijal_Kurs" Association="Self.FK_Materijal_Kurs">
+      <End Role="Kurs" EntitySet="Kurs" />
+      <End Role="Materijal" EntitySet="Materijal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Materijal_Profesor" Association="Self.FK_Materijal_Profesor">
+      <End Role="Profesor" EntitySet="Profesor" />
+      <End Role="Materijal" EntitySet="Materijal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_prisustvuje_Cas" Association="Self.FK_prisustvuje_Cas">
+      <End Role="Cas" EntitySet="Cas" />
+      <End Role="prisustvuje" EntitySet="prisustvuje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_prisustvuje_Student" Association="Self.FK_prisustvuje_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="prisustvuje" EntitySet="prisustvuje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Profesor_Korisnik1" Association="Self.FK_Profesor_Korisnik1">
+      <End Role="Korisnik" EntitySet="Korisnik" />
+      <End Role="Profesor" EntitySet="Profesor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Korisnik" Association="Self.FK_Student_Korisnik">
+      <End Role="Korisnik" EntitySet="Korisnik" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Kurs" Association="Self.FK_Student_Kurs">
+      <End Role="Kurs" EntitySet="Kurs" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transakcija_Student" Association="Self.FK_Transakcija_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Transakcija" EntitySet="Transakcija" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

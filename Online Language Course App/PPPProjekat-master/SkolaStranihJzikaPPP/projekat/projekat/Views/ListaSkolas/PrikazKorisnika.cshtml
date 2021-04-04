@@ -1,0 +1,59 @@
+﻿@model IEnumerable<projekat.Models.login>
+
+@{
+    ViewBag.Title = "Prikaz korisnika";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Home/Index");
+    }
+}
+@Styles.Render("~/Styles/Index.css")
+
+<div class="bg-light" style="padding:5px">
+    <h2>View</h2>
+
+    <p>
+        @Html.ActionLink("Dodaj novog", "CreateKorisnik")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userType)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (item.id != (int)Session["userID"])
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.userType)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Izmeni", "EditKorisnika", new { id = item.id }) |
+                        @Html.ActionLink("Podaci", "DetailsKorisnika", new { id = item.id }) |
+                        @Html.ActionLink("Obrisi", "DeleteKorisnika", new { id = item.id })
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+    </div>
+        @Html.ActionLink("Nazad", "IndexAdmin")

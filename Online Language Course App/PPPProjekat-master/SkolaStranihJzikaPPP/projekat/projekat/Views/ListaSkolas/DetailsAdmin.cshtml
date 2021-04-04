@@ -1,0 +1,115 @@
+﻿@model projekat.Models.ListaSkola
+
+@{
+    ViewBag.Title = "DetailsAdmin";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Home/Index");
+    }
+}
+@Styles.Render("~/Styles/Index.css")
+
+
+
+<div class="bg-light" style="padding:10px" >
+    <h2>Podaci o skolama</h2>
+
+    <h4>ListaSkola</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NazivSkole)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NazivSkole)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdresaReg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdresaReg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opstina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opstina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostanskiBroj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostanskiBroj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaticniBroj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaticniBroj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pib)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pib)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojRacuna)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojRacuna)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WebStranica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WebStranica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SlikaPecat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SlikaPecat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Beleske)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Beleske)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KontaktOsoba.ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KontaktOsoba.ime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Izmeniti", "Edit", new { id = Model.idS }) |
+    @Html.ActionLink("Nazad", "IndexAdmin")
+</p>

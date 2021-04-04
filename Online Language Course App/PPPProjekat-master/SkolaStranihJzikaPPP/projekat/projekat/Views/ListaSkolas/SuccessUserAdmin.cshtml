@@ -1,0 +1,21 @@
+﻿@model projekat.Models.login
+@{
+    ViewBag.Title = "SuccessUserAdmin";
+    Layout = null;
+}
+@Styles.Render("~/Styles/Index.css")
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SuccessAddUser</title>
+</head>
+<body>
+    <div>
+        <h3>@Html.DisplayFor(model => model.SuccessAddUserAdmin)</h3>
+        @Html.ActionLink("Pocetna strana", "IndexAdmin")
+    </div>
+</body>
+</html>

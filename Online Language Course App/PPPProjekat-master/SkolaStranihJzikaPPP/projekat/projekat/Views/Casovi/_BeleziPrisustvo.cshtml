@@ -1,0 +1,45 @@
+﻿@model projekat.viewModel.SkolaViewModel
+@{
+    ViewBag.Title = "Prisustvo";
+}
+
+<div class="row justify-content-center" style="margin-top:10px;">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header"><h4 class="text-center" style="font-family:'Times New Roman';">Studenti</h4></div>
+            <div class="card-body">
+                @using (Html.BeginForm("beleziPrisustvo2", "Casovi", FormMethod.Post))
+                {
+                    <div class="form-row">
+                        <div class="col-md-3 form-group">
+                            <p class="text-md-left text-black-50 text-uppercase">Ime</p>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <p class="text-md-left text-black-50 text-uppercase">Prisustvo</p>
+                        </div>
+                    </div>
+                    <hr />
+                    for(int i=0;i<Model.studenti.Count();i++)
+                    {
+                    <div class="form-row">
+                        <div class="col-md-3 form-group">
+                            <label>@Model.studenti[i].Korisnik.Ime</label>
+                            @Html.HiddenFor(x=>x.studenti[i].StudentID)
+                            @Html.HiddenFor(x=>x.idCas)
+                        </div>
+                        <div class="col-md-1 form-group">
+                            @Html.CheckBoxFor(x => x.studenti[i].isChecked)
+                        </div>
+                    </div>
+                    }
+                    <div class="form-row">
+                        <div class="col-md-12 form-group">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block mb-2">Potvrdi</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

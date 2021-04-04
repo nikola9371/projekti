@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="80cabdc7ebd748489a27ce9ce59f1fba" Name="Diagram1">
+        <EntityTypeShape EntityType="SkolaSModel.Admin" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SkolaSModel.Ca" Width="1.5" PointX="5.25" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SkolaSModel.Dokument" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="SkolaSModel.Ispit" Width="1.5" PointX="6" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SkolaSModel.Ispit_Odrzavanje" Width="1.5" PointX="8.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SkolaSModel.Korisnik" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SkolaSModel.Kur" Width="1.5" PointX="3.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SkolaSModel.login" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SkolaSModel.Materijal" Width="1.5" PointX="8.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SkolaSModel.prisustvuje" Width="1.5" PointX="11.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SkolaSModel.Profesor" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SkolaSModel.Student" Width="1.5" PointX="6" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SkolaSModel.Transakcija" Width="1.5" PointX="8.25" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="SkolaSModel.FK_Admin_Korisnik" ManuallyRouted="false" />
+        <AssociationConnector Association="SkolaSModel.FK_Cas_Kurs" ManuallyRouted="false" />
+        <AssociationConnector Association="SkolaSModel.FK_Cas_Profesor" ManuallyRouted="false" />
+        <AssociationConnector Association="SkolaSModel.FK_prisustvuje_Cas" ManuallyRouted="false" />
+        <AssociationConnector Association="SkolaSModel.FK_Dokument_Korisnik" ManuallyRouted="false" />
+        <AssociationConnector Association="SkolaSModel.FK_Ispit_Odrzavanje_Ispit" ManuallyRouted="false" />
+        <AssociationConnector Association="SkolaSModel.FK_Ispit_Odrzavanje_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SkolaSModel.FK_login_Korisnik" ManuallyRouted="false" />
+        <AssociationConnector Association="SkolaSModel.FK_Profesor_Korisnik1" ManuallyRouted="false" />
+        <AssociationConnector Association="SkolaSModel.FK_Student_Korisnik" ManuallyRouted="false" />
+        <AssociationConnector Association="SkolaSModel.FK_Materijal_Kurs" ManuallyRouted="false" />
+        <AssociationConnector Association="SkolaSModel.FK_Student_Kurs" ManuallyRouted="false" />
+        <AssociationConnector Association="SkolaSModel.FK_Materijal_Profesor" ManuallyRouted="false" />
+        <AssociationConnector Association="SkolaSModel.FK_prisustvuje_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SkolaSModel.FK_Transakcija_Student" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

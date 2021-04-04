@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="../../Styles/btstrp/css/business-frontpage.css" rel="stylesheet">
+    <link href="../../Styles/btstrp/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+
+        #header {
+            align-items: center;
+            justify-content: space-around;
+            display: flex;
+        }
+    </style>
+
+</head>
+<body>
+    @*model projekat.Models.login*@
+    @{
+        ViewBag.Title = "Pravljenje naloga";
+    }
+   
+
+    <div class="container">
+        <div class="container bg-dark col-8 " style="text-align:center;height:auto;width:auto">
+            <!-- Brand/logo -->
+            <a class="navbar-brand" href=@Url.Action("Index")>
+                <img src="~/pics/homeicon.png" alt="logo" style="width:30px; ">
+            </a>
+            <h1 style="color:white">Registracija korisnika</h1>
+            <!-- Links -->
+            <ul class="navbar-nav"></ul>
+        </div>
+        <table class="table table-striped" id="header">
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.AntiForgeryToken()
+                        <form action="registracija" method="post">
+                            <input type="text" id="login" class="fadeIn second" name="korIme" placeholder="Korisničko ime">
+                            <input type="password" id="password" class="fadeIn third" name="sifra" placeholder="Lozinka">
+                            <input type="password" id="password" class="fadeIn third" name="potvrdasifra" placeholder="Potvrda lozinke">
+                            <input type="text" id="password" class="fadeIn third" name="ime" placeholder="Ime">
+                            <input type="text" id="password" class="fadeIn third" name="prezime" placeholder="Prezime">
+                            <input type="text" id="password" class="fadeIn third" name="email" placeholder="E-mail">
+                            <input type="text" id="password" class="fadeIn third" name="telefon" placeholder="Telefon">
+                            <input type="text" id="password" class="fadeIn third" name="adresa" placeholder="Adresa">
+                            <input type="text" id="password" class="fadeIn third" name="drzava" placeholder="Država">
+                            <input type="text" id="password" class="fadeIn third" name="grad" placeholder="Grad">
+                            <input type="text" id="password" class="fadeIn third" name="postanskibroj" placeholder="Poštanski broj">
+
+                            <input type="submit" class="fadeIn fourth" value="Registruj se"> <br/>
+
+                        </form>
+                        @*using (Html.BeginForm("AddUser", "Home", FormMethod.Post))
+                            {
+
+                                <fieldset>
+
+                                    <div class="form-group col-sm-3">
+                                        <label class="col-md-6 col-sm-4 col-lg-12 control-label">Korisničko ime</label>
+                                        <br>
+                                        <div class="col-md-6 col-sm-4 col-lg-12 inputGroupContainer">
+                                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>@*Html.EditorFor(model => model.username)</div>
+                                        </div>
+                                        <br>
+                                        <br>
+
+                                        <label class="col-md-6 col-sm-4 col-lg-12 control-label">Šifra</label>
+                                        <br>
+                                        <div class="col-md-6 col-sm-4 col-lg-12 inputGroupContainer">
+                                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>@*Html.EditorFor(model => model.password)</div>
+                                        </div>
+
+                                        @*Html.HiddenFor(model => model.userType, new { Value = "user" })
+                                    </div>
+
+                                    <div class="btn col-12">
+                                        <input type="submit" value="Napravi" style="float:left" />
+                                    </div>
+                                </fieldset>
+
+                            }*@
+                    </td>
+                    @*Html.DisplayFor(model => model.SuccessAddUser)*@
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+
+</body>
+</html>

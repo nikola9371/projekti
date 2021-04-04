@@ -1,0 +1,123 @@
+﻿<HTML>
+
+    <head>
+        <style>
+        th,td
+        {
+            width:100px;
+
+        }
+        </style>
+    </head>
+
+    <body>
+        @model IEnumerable<projekat.Models.ListaSkola>
+        @{
+            ViewBag.Title = "IndexAdmin";
+            Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+            if (Session["userID"] == null)
+            {
+                Response.Redirect("~/Home/Index");
+            }
+        }
+        @Styles.Render("~/Styles/Index.css")
+
+        <div class="container bg-light col-12">
+
+            <h2>Tabela skola za administratore</h2>
+
+            <p>
+                @Html.ActionLink("Dodati novi", "CreateAdmin")
+            </p>
+            <table class="table bg-light" style="table-layout:fixed;float:left;">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NazivSkole)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AdresaReg)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Opstina)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PostanskiBroj)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MaticniBroj)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.pib)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BrojRacuna)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.WebStranica)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SlikaPecat)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Beleske)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.KontaktOsoba.ime)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NazivSkole)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AdresaReg)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Opstina)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PostanskiBroj)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaticniBroj)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.pib)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BrojRacuna)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.WebStranica)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SlikaPecat)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Beleske)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.KontaktOsoba.ime)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Izmeniti", "EditAdmin", new { id = item.idS })
+                            @Html.ActionLink("Pregled", "DetailsAdmin", new { id = item.idS })
+                            @Html.ActionLink("Obrisi", "Delete", new { id = item.idS })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+
+        </div>
+        @Html.ActionLink("Nazad", "Admin", "Home")
+
+    </body>
+
+</HTML>

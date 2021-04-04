@@ -1,0 +1,47 @@
+﻿@model projekat.viewModel.SkolaViewModel
+@{
+    ViewBag.Title = "Zakljucivanje";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header"><h4 class="text-center" style="font-family:'Times New Roman';">Zaključivanje ocene</h4></div>
+            <div class="card-body">
+                @if (ViewBag.SuccMsg != null)
+                {
+                    <div class="form-row hideAfter">
+                        <div class="form-group col-md-8"><p class="text-success">@ViewBag.SuccMsg</p></div>
+                    </div>
+                }
+                @using (Html.BeginForm("Zakljucivanje1", "Casovi", FormMethod.Post))
+                {
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            @Html.LabelFor(x => x.idStudent, "Polaznici:")
+                            @Html.DropDownListFor(x => x.idStudent, Model.StudentiList, null, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            @if (Model.StudentiList.Count() > 0)
+                            {
+                                <button type="submit" class="btn btn-primary btn-lg btn-block mb-2">Potvrdi</button>
+                            }
+                            else
+                            {
+                                <button type="submit" class="btn btn-primary btn-lg btn-block mb-2 disabled">Nema polaznika</button>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@if (Model.Student != null)
+{
+    @Html.Partial("_ZakljucivanjeStudent", Model)
+}
+<script>setTimeout(function () { $('.hideAfter').hide(); }, 4000);</script>
