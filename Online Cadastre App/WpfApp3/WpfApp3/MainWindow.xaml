@@ -1,0 +1,85 @@
+﻿<Window x:Class="WpfApp3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Title="Pregled parcela i objekata" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <DataTemplate x:Key="KmbOpstineKat">
+            <StackPanel Margin="3" Orientation="Horizontal">
+                <TextBlock Text="{Binding Naziv}"/>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Menu HorizontalAlignment="Left" VerticalAlignment="Top">
+            <MenuItem Header="Rad sa objektima">
+                <MenuItem Header="Unos novog objekta" Click="MenuItem_Click"/>
+            </MenuItem>
+        </Menu>
+        <TextBlock Text="Katastarska opstina" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15,50,0,0"/>
+        <ComboBox x:Name="cmbKatastar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="130,50,0,0" Width="120" ItemTemplate="{StaticResource KmbOpstineKat}" SelectionChanged="CmbKatastar_SelectionChanged"/>
+        <DataGrid x:Name="datagrid1" AutoGenerateColumns="False" Width="320" Height="150" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30,100,0,0" LoadingRowDetails="Datagrid1_LoadingRowDetails">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Brisanje objekta" Click="MenuItem_Click_1"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Sifra parcele" Width="80" Binding="{Binding IDParcele}"/>
+                <DataGridTextColumn Header="Povrsina (u arima)" Width="110" Binding="{Binding Povrsina}"/>
+                <DataGridTextColumn Header="Vlasnistvo" Width="70" Binding="{Binding Vlasnistvo}"/>
+                <DataGridTextColumn Header="Adresa" Width="60" Binding="{Binding Adresa}"/>
+            </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="1" Padding="10" Background="BlanchedAlmond">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Sifra objekta" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,0,0,0"/>
+                            <TextBox IsEnabled="False" x:Name="txtSifrObjek" Grid.Row="0" Grid.Column="1" Margin="1"/>
+                            <TextBlock Text="Kvadratura" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,0,0,0"/>
+                            <TextBox IsEnabled="False" x:Name="txtKvadr" Grid.Row="0" Grid.Column="3" Margin="1"/>
+                            <TextBlock Text="Vlasnik" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,0,0,0"/>
+                            <TextBox IsEnabled="False" x:Name="txtVlasnik" Grid.Row="1" Grid.Column="1" Margin="1"/>
+                            <TextBlock Text="Uknjizeno" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,0,0,0"/>
+                            <CheckBox x:Name="cbUknjizeno" Grid.Row="1" Grid.Column="3" Margin="1" />
+
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
+        <GroupBox Header="Promena vlasnistva parcele" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="420,50,0,0" Width="220" Height="220">
+            <Grid>
+                <TextBlock Text="Sifra parcele" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+                <TextBox x:Name="txtSifraParcelaNovo" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="90,10,0,0" Width="80"/>
+                <GroupBox Header="Vlasnistvo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,50,0,0" Width="150" Height="100">
+                    <Grid x:Name="boxVlasnistvo">
+                        <RadioButton x:Name="rbPrivatno" Content="privatno"  HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                        <RadioButton x:Name="rbKoriscenje" Content="na koriscenje" HorizontalAlignment="Center" Margin="24,30,0,0"/>
+                        <RadioButton x:Name="rbDrzavno" Content="drzavno" HorizontalAlignment="Center" Margin="0,50,5,0"/>
+                    </Grid>
+                </GroupBox>
+                <Button Content="Izmeni" HorizontalAlignment="Center" Margin="0,160,0,10" Width="70" Height="25" Click="Button_Click"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Neuknjizeno" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,330,0,0" Width="380" Height="60">
+            <Grid>
+                <TextBlock Text="Broj neuknjizenih objekata na izabranoj katastarskoj opstini je" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" Width="330"/>
+                <TextBlock x:Name="tbBrNeuknjizenih" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="350,10,0,0" Text="1"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
