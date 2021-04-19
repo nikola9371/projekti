@@ -1,2 +1,0 @@
-# PPPProjekat
-Skola stranih jezika
